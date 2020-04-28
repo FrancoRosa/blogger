@@ -4,6 +4,7 @@
   <p>
     <span>Posted <%= distance_of_time_in_words(comment.article.created_at, comment.created_at) %> later</span>
     <span><%= link_to "Delete Comment", article_comment_path(@article, comment), method: :delete, data: {confirm: "Really delete the article?"}
- %></span>
+    %></span>
+    <span><%= link_to "Edit Comment", edit_article_comment_path(@article, comment) %><span>
   </p>
 </div>
