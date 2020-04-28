@@ -11,4 +11,14 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:author_name, :body)
   end
+
+  def destroy
+    @article = Article.find(params[:article_id])
+    @comment = @article.comments.find(params[:id])
+    @comment.destroy
+
+    flash.notice = "Comment '#{@comment.body}' was succesfuly removed!"
+
+    redirect_to article_path(@article)
+  end
 end
