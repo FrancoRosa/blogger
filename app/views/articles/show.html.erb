@@ -4,6 +4,7 @@
   <% @article.tags.each do |tag| %>
     <%= link_to tag.name, tag_path(tag) %>
   <% end %>
+  <%= link_to "Add New Tag", article_tags_new_path(@article)%>
 </p>
 <br>
 

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   resources :articles do
     resources :comments
+    get 'tags/new', to: 'tags#new'
+    get 'tags/:id/edit', to: 'tags#edit'
   end
   resources :tags
 end

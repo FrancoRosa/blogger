@@ -8,9 +8,11 @@ class TagsController < ApplicationController
   end
 
   def destroy
+    @tagging = Tagging.find(params[:id])
+    @tagging.destroy
     @tag = Tag.find(params[:id])
     @tag.destroy
-    flash.notice = "Tag '#{@tag.title}' Deleted!"
+    flash.notice = "Tag '#{@tag.name}' Deleted! tagging:#{@tagging.id}, tag:#{@tag.id}"
     redirect_to tags_path
   end
 
@@ -19,13 +21,24 @@ class TagsController < ApplicationController
   end
 
   def create
+    @tagging = Tagging.new( 
+      tag_id: params[:id], 
+      article_id: params[:article_id] 
+    )
+    @tagging.save
+    
     @tag = Tag.new( tag_params )
     @tag.save
+
+    @article = Article.find(id: params[:article_id])
+    @article.tag_list = @article.tag_list << @tag.name 
+
     flash.notice = "Tag '#{@tag.name}' Created!"
+
     redirect_to tag_path(@tag)
   end
-  
-  def edit
-  end
 
+  def tag_params
+    params.require(:tag).permit(:name)
+  end
 end
