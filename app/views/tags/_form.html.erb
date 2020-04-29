@@ -1,0 +1,11 @@
+<h3>Create a Tag</h3>
+
+<%= form_for [ @tag ] do |f| %>
+  <p>
+    <%= f.name :name, "Tag Name"  %><br/>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit 'Submit' %>
+  </p>
+<% end %>

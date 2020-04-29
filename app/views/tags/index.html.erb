@@ -1,0 +1,17 @@
+<h1> Tags: </h1>
+<ul>
+<% @tags.each do |tag| %>
+ <br>
+ <li>
+  <%= link_to tag.name, tag_path(tag.id)%>
+  <span style="text-style: italics;">
+  <%= link_to 'edit', tag_path(tag.id), method: :edit%>
+  <%= link_to 'delete', tag_path(tag.id), method: :delete,  data: {confirm: "Really delete the tag?"}%>
+  </span>
+ </li>
+
+<% end %>
+<ul>
+<br>
+<br>
+<%= link_to "Create a new tag", new_tag_path, class: 'new_tag' %>
