@@ -1,6 +1,6 @@
 <h3>Create a Tag</h3>
 
-<%= form_for [ @tag ] do |f| %>
+<%= form_for [ @article, @tag ] do |f| %>
   <p>
     <%= f.label :name, "Tag Name"  %><br/>
     <%= f.text_field :name %>
