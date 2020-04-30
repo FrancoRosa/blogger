@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
   def create
-    fsdf
     @comment = Comment.new(comment_params)
     @comment.article_id = params[:article_id]
   
